@@ -1,0 +1,79 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-basic-title">{{ modalTitle }}</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="cancel()"
+  ></button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-sm-2">
+      <label class="form-label">Title</label>
+    </div>
+    <div class="col-sm-10">
+      <input [(ngModel)]="editItem.title" type="text" />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label class="form-label">Priority:</label>
+    </div>
+    <div class="col-sm-3">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          class="btn btn-outline-primary"
+          id="dropDownPriority"
+          ngbDropdownToggle
+        >
+          {{ getPriorityName() }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropDownPriority">
+          <button ngbDropdownItem (click)="editItem.priority = 0">Low</button>
+          <button ngbDropdownItem (click)="editItem.priority = 1">
+            Medium
+          </button>
+          <button ngbDropdownItem (click)="editItem.priority = 2">High</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label class="form-label">Status:</label>
+    </div>
+    <div class="col-sm-3">
+      <div ngbDropdown class="d-inline-block">
+        <button
+          class="btn btn-outline-primary"
+          id="dropDownStatus"
+          ngbDropdownToggle
+        >
+          {{ getStatusName() }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropDownStatus">
+          <button ngbDropdownItem (click)="editItem.status = 1">
+            Completed
+          </button>
+          <button ngbDropdownItem (click)="editItem.status = 0">
+            NotCompleted
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-2">
+      <label class="form-label">Date:</label>
+    </div>
+    <div class="col-sm-5">
+      <label class="form-label">{{ editItem.dateCreated | date: "short" }}</label>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-outline-dark" (click)="save()">
+    Save
+  </button>
+</div>

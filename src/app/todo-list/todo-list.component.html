@@ -1,0 +1,3 @@
+<div>
+    <app-todo-item *ngFor="let item of items" [item]="item" (onEdit)="onItemEditing($event)" (onDelete)="onItemDeleting($event)"></app-todo-item>
+</div>
